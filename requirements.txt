@@ -1,0 +1,22 @@
+# =========================================================================
+#  Backend Render — FakeProfileDetector
+#  Dépendances minimales et stables pour un déploiement Render rapide.
+# =========================================================================
+
+# Web framework
+Flask==3.0.3
+flask-cors==4.0.1
+gunicorn==21.2.0
+
+# Scraping / extraction d'URL
+requests==2.32.3
+beautifulsoup4==4.12.3
+lxml==5.2.2
+
+# Numerics (utilisés par le calcul de score et le LSTM)
+numpy==1.26.4
+
+# LSTM TFLite (job text)
+# tflite-runtime serait plus léger, mais tensorflow expose le tokenizer Keras
+# directement et reste compatible avec le tokenizer.json fourni par le projet.
+tensorflow-cpu==2.15.0
