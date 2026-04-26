@@ -13,7 +13,7 @@ services:
     autoDeploy: true
     envVars:
       - key: PYTHON_VERSION
-        value: "3.11.9"
+        value: "3.11"
       - key: ALLOWED_ORIGINS
         # Mettez ici l'URL EXACTE de votre site InfinityFree (séparées par virgules)
         # Exemple : https://fpd.infinityfreeapp.com,https://fpd.rf.gd
