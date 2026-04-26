@@ -1,22 +1,25 @@
 # Blueprint Render — déploiement automatique
 # https://render.com/docs/blueprint-spec
+
 services:
   - type: web
     name: fake-profile-detector-api
     env: python
-    region: frankfurt          # change selon ta région préférée
-    plan: free                 # passe en "starter" si besoin de plus de RAM (LSTM)
-    pythonVersion: "3.11"
-    buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
-    startCommand: "gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 120"
+    region: frankfurt
+    plan: free
+
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 120
+
     healthCheckPath: /health
     autoDeploy: true
+
     envVars:
       - key: PYTHON_VERSION
-        value: "3.11"
+        value: 3.11
+
       - key: ALLOWED_ORIGINS
-        # Mettez ici l'URL EXACTE de votre site InfinityFree (séparées par virgules)
-        # Exemple : https://fpd.infinityfreeapp.com,https://fpd.rf.gd
         value: "*"
+
       - key: LSTM_THRESHOLD
         value: "0.7"
