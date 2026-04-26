@@ -19,7 +19,7 @@ services:
         value: 3.11
 
       - key: ALLOWED_ORIGINS
-        value: "https://dash.infinityfree.com/accounts/if0_41762045/domains/fakeprofiledetector.wuaze.com"
+        value: "http://fakeprofiledetector.wuaze.com/"
 
       - key: LSTM_THRESHOLD
         value: "0.7"
