@@ -13,10 +13,13 @@ requests==2.32.3
 beautifulsoup4==4.12.3
 lxml==5.2.2
 
-# Numerics (utilisés par le calcul de score et le LSTM)
+# Numerics
 numpy==1.26.4
 
-# LSTM TFLite (job)
-# tflite-runtime serait plus léger, mais tensorflow expose le tokenizer Keras
-# directement et reste compatible avec le tokenizer.json fourni par le projet.
+# LSTM TFLite (job posting)
 tensorflow-cpu==2.15.0
+
+# Modèles classiques (Instagram XGBoost / LinkedIn SVC)
+joblib==1.4.2
+scikit-learn==1.4.2
+xgboost==2.0.3
