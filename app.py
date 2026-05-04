@@ -78,7 +78,7 @@ HTTP_HEADERS = {
     "Accept": "text/html,application/xhtml+xml,application/json;q=0.9,*/*;q=0.8",
     "Accept-Language": "fr,en;q=0.8",
 }
-DEFAULT_TIMEOUT = 60
+DEFAULT_TIMEOUT = 20
 
 # ----------------------------------------------------------------------------- #
 #  Flask app                                                                     #
