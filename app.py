@@ -620,14 +620,42 @@ def _clean_text(text: Optional[str], limit: int = 600) -> str:
     return re.sub(r"\s+", " ", text).strip()[:limit]
 
 
-def _http_get(url: str, timeout: int = DEFAULT_TIMEOUT) -> Optional[requests.Response]:
+# def _http_get(url: str, timeout: int = DEFAULT_TIMEOUT) -> Optional[requests.Response]:
+   # try:
+    #    r = requests.get(url, headers=HTTP_HEADERS, timeout=timeout, allow_redirects=True)
+    #    if r.status_code == 200 or r.status_code in (401, 403, 404):
+   #         return r
+   # except requests.RequestException:
+  #      return None
+ #   return None
+# ==============
+def _http_get(url: str, timeout: int = 20) -> Optional[requests.Response]:
     try:
-        r = requests.get(url, headers=HTTP_HEADERS, timeout=timeout, allow_redirects=True)
-        if r.status_code == 200 or r.status_code in (401, 403, 404):
+        session = requests.Session()
+
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+            "Accept-Language": "en-US,en;q=0.9",
+            "Referer": "https://www.instagram.com/",
+            "Connection": "keep-alive"
+        }
+
+        session.headers.update(headers)
+
+        r = session.get(url, timeout=timeout, allow_redirects=True)
+
+        print("STATUS:", r.status_code)
+
+        # نقبل فقط 200
+        if r.status_code == 200:
             return r
-    except requests.RequestException:
+        else:
+            return None
+
+    except Exception as e:
+        print("ERROR HTTP:", e)
         return None
-    return None
+#=====================
 
 
 def _extract_og_meta(soup: BeautifulSoup) -> Dict[str, str]:
